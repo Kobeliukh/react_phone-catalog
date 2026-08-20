@@ -1,0 +1,80 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use 'sass:map';
+
+.header {
+  height: $header-height-screen-s;
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: to-rem(16);
+  z-index: map.get($z-indexes, 'header');
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+
+  @include respond-to('screen-l') {
+    height: $header-height-screen-l;
+    gap: to-rem(24);
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  padding-inline: $page-padding-screen-s;
+
+  @include respond-to('screen-l') {
+    padding-inline: $page-padding-screen-m;
+  }
+}
+
+.buttons {
+  display: flex;
+  margin-left: auto;
+}
+
+.linksWrapper {
+  display: none;
+
+  @include respond-to('screen-m') {
+    display: flex;
+  }
+}
+
+.burgerMenuButton {
+  border: 0;
+  background: none;
+  padding: $page-padding-screen-s;
+  box-shadow: -1px 0 0 0 $color-elements;
+  cursor: pointer;
+
+  @include respond-to('screen-m') {
+    display: none;
+  }
+}
+
+.burgerMenuIcon {
+  display: block;
+  width: to-rem(16);
+  height: to-rem(16);
+  background-image: url('/img/icons/burger-menu.svg');
+
+  &.isOpen {
+    background-image: url('/img/icons/close.svg');
+  }
+}
+
+.burgerMenu {
+  @include respond-to('screen-m') {
+    display: none;
+  }
+}
+
+.navWrapper {
+  display: none;
+
+  @include respond-to('screen-m') {
+    display: flex;
+  }
+}

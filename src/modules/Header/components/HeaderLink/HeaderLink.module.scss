@@ -1,0 +1,48 @@
+@use '@/styles/functions' as *;
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.headerLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 $color-elements;
+  padding: to-rem(24);
+
+  &.isActive,
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &.isActive::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: to-rem(2);
+    background-color: $color-primary;
+
+    @include respond-to('screen-m') {
+      height: to-rem(3);
+    }
+  }
+
+  @include respond-to('screen-m') {
+    padding: to-rem(16);
+  }
+
+  @include respond-to('screen-l') {
+    padding: to-rem(24);
+  }
+}
+
+.icon {
+  display: block;
+  width: to-rem(16);
+  height: to-rem(16);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

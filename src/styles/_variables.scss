@@ -1,9 +1,24 @@
-// colors
-$primary: #313237;
-$secondary: #89939a;
-$icons: #b4bdc3;
-$elements: #e2e6e9;
-$hover: #fafbfc;
-$white: #fff;
-$green: #27ae60;
-$red: #eb5757;
+@use '@/styles/functions' as *;
+
+$color-primary: #313237;
+$color-secondary: #89939a;
+$color-icons: #b4bdc3;
+$color-elements: #e2e6e9;
+$color-hover: #fafbfc;
+$color-white: #fff;
+$color-green: #27ae60;
+$color-red: #eb5757;
+$page-max-width-screen-l: to-rem(1136);
+$page-padding-screen-s: to-rem(16);
+$page-padding-screen-m: to-rem(24);
+$header-height-screen-s: to-rem(48);
+$header-height-screen-l: to-rem(64);
+$hover-duration: 200ms;
+$screen-breakpoints: (
+  'screen-m': to-rem(640),
+  'screen-l': to-rem(1200),
+);
+$z-indexes: (
+  'header': 20,
+  'burger-menu': 10,
+);
