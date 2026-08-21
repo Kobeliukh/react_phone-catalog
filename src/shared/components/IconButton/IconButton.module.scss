@@ -3,6 +3,7 @@
 @use '@/styles/mixins' as *;
 
 .baseButton {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +12,10 @@
   background: none;
   border: 1px solid $color-icons;
   cursor: pointer;
+
+  &.pagination {
+    display: block;
+  }
 
   &.pagination,
   &.arrow {
@@ -45,7 +50,6 @@
   @include body-text;
 
   line-height: 1;
-  transform: translateY(1px);
 
   .baseButton.pagination.selected & {
     color: $color-white;
