@@ -1,0 +1,62 @@
+@use '@/styles/variables' as *;
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+  padding: to-rem(32);
+  border: 1px solid $color-elements;
+}
+
+.title {
+  @include body-text;
+
+  padding-top: to-rem(16);
+}
+
+.prices {
+  @include h3-base;
+  @include h3-desktop;
+
+  display: flex;
+  align-items: center;
+  gap: to-rem(8);
+}
+
+.fullPrice {
+  position: relative;
+  color: $color-secondary;
+  font-weight: 600;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.divider {
+  height: 1px;
+  background-color: $color-elements;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(8);
+  padding-block: to-rem(8);
+}
+
+.spec {
+  @include small-text;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.specTitle {
+  color: $color-secondary;
+}
+
+.buttons {
+  display: flex;
+  gap: to-rem(8);
+}

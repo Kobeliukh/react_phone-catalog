@@ -36,17 +36,29 @@
   }
 }
 
-@mixin h3 {
+@mixin h3-base {
   color: $color-primary;
   font-family: Mont, sans-serif;
+}
+
+@mixin h3-desktop {
+  font-size: to-rem(22);
+  font-weight: 700;
+  line-height: to-rem(31);
+}
+
+@mixin h3-mobile {
   font-size: to-rem(20);
   font-weight: 600;
   line-height: to-rem(26);
+}
+
+@mixin h3 {
+  @include h3-base;
+  @include h3-mobile;
 
   @include respond-to('screen-m') {
-    font-size: to-rem(22);
-    font-weight: 700;
-    line-height: to-rem(31);
+    @include h3-desktop;
   }
 }
 
