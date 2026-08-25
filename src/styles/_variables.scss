@@ -13,12 +13,15 @@ $page-padding-screen-s: to-rem(16);
 $page-padding-screen-m: to-rem(24);
 $header-height-screen-s: to-rem(48);
 $header-height-screen-l: to-rem(64);
-$hover-duration: 200ms;
+$animation-duration: 200ms;
+$animation-duration-slider: 500ms;
 $screen-breakpoints: (
   'screen-m': to-rem(640),
   'screen-l': to-rem(1200),
 );
 $z-indexes: (
-  'header': 20,
-  'burger-menu': 10,
+  'header': 100,
+  'burger-menu': 99,
+  'slide': 1,
+  'slide-active': 2,
 );

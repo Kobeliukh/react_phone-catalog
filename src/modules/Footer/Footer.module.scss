@@ -57,7 +57,7 @@
   width: fit-content;
   display: block;
   color: $color-secondary;
-  transition: color $hover-duration;
+  transition: color $animation-duration;
 
   &:hover {
     color: $color-primary;

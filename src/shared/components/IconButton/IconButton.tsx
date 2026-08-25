@@ -8,8 +8,8 @@ interface BaseProps {
 
 type Props =
   | (BaseProps & { variant: 'pagination'; number: number; selected?: boolean })
-  | (BaseProps & { variant: 'arrow'; selected?: never })
-  | (BaseProps & { variant: 'favorite'; selected?: boolean });
+  | (BaseProps & { variant: 'arrow'; selected?: never; rotate?: number })
+  | (BaseProps & { variant: 'favorite'; selected?: boolean; rotate?: never });
 
 export const IconButton = (props: Props) => {
   const { className, variant, disabled = false } = props;
@@ -30,7 +30,12 @@ export const IconButton = (props: Props) => {
       {variant === 'pagination' ? (
         <span className={styles.number}>{props.number}</span>
       ) : (
-        <span className={classNames(styles.icon, styles[variant])} />
+        <span
+          className={classNames(styles.icon, styles[variant])}
+          style={{
+            transform: props.rotate ? `rotate(${props.rotate}deg)` : undefined,
+          }}
+        />
       )}
     </button>
   );
