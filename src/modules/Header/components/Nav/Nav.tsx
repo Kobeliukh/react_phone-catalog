@@ -12,7 +12,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   });
 };
 
-const linksConfig = [
+const LINKS_CONFIG = [
   { label: 'Home', path: '/' },
   { label: 'Phones', path: '/phones' },
   { label: 'Tablets', path: '/tablets' },
@@ -23,7 +23,7 @@ export const Nav = ({ variant = 'column' }: Props) => {
   return (
     <nav className={classNames(styles.nav, styles[variant])}>
       <ul className={classNames(styles.navList, styles[variant])}>
-        {linksConfig.map(link => (
+        {LINKS_CONFIG.map(link => (
           <li key={link.path} className={styles.navItem}>
             <NavLink to={link.path} className={getLinkClass}>
               {link.label}
