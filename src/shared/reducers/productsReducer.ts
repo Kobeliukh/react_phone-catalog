@@ -1,0 +1,37 @@
+import { Product } from '@/types/Product';
+
+type ProductsAction =
+  | { type: 'FETCH_START' }
+  | { type: 'FETCH_SUCCESS'; payload: Product[] }
+  | { type: 'FETCH_ERROR' };
+
+export interface ProductsState {
+  products: Product[];
+  isLoading: boolean;
+  hasError: boolean;
+}
+
+export const productsInitialState: ProductsState = {
+  products: [],
+  isLoading: false,
+  hasError: false,
+};
+
+export const productsReducer = (
+  state: ProductsState,
+  action: ProductsAction,
+): ProductsState => {
+  switch (action.type) {
+    case 'FETCH_START':
+      return { ...state, isLoading: true, hasError: false };
+
+    case 'FETCH_SUCCESS':
+      return { ...state, isLoading: false, products: action.payload };
+
+    case 'FETCH_ERROR':
+      return { ...state, isLoading: false, hasError: true };
+
+    default:
+      return state;
+  }
+};

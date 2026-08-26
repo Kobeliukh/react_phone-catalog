@@ -4,6 +4,7 @@ import classNames from 'classnames';
 interface BaseProps {
   className?: string;
   disabled?: boolean;
+  onClick?: () => void;
 }
 
 type Props =
@@ -12,7 +13,7 @@ type Props =
   | (BaseProps & { variant: 'favorite'; selected?: boolean; rotate?: never });
 
 export const IconButton = (props: Props) => {
-  const { className, variant, disabled = false } = props;
+  const { className, variant, disabled = false, onClick } = props;
 
   return (
     <button
@@ -26,6 +27,7 @@ export const IconButton = (props: Props) => {
         },
         className,
       )}
+      onClick={onClick}
     >
       {variant === 'pagination' ? (
         <span className={styles.number}>{props.number}</span>
