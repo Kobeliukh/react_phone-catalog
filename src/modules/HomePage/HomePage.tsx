@@ -1,4 +1,3 @@
-import { useProducts } from '@/shared/hooks/useProducts';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 
@@ -7,9 +6,10 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { Categories } from '@/types/Categories';
 import { useMemo } from 'react';
 import { ModelsCount } from '@/types/ModelsCount';
+import { useProductsContext } from '@/shared/hooks/useProductsContext';
 
 export const HomePage = () => {
-  const productsState = useProducts();
+  const productsState = useProductsContext();
 
   const modelsCount: ModelsCount = useMemo(
     () =>
