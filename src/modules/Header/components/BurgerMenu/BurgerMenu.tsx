@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { HeaderLink } from '../HeaderLink';
 import { Nav } from '../Nav';
 import styles from './BurgerMenu.module.scss';
+import { useEffect } from 'react';
 
 interface Props {
   className?: string;
@@ -9,6 +10,14 @@ interface Props {
 }
 
 export const BurgerMenu = ({ isOpen, className }: Props) => {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <div
       className={classNames(
