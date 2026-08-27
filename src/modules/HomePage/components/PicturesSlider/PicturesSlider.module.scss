@@ -86,7 +86,6 @@
   border-radius: 1000px;
   display: flex;
   border: 0.03em solid #444;
-  transition: background-color $animation-duration;
   cursor: pointer;
 
   &:hover {
@@ -199,13 +198,18 @@
 }
 
 .control {
+  position: relative;
   width: to-rem(14);
   height: to-rem(4);
   background-color: $color-elements;
   transition: background-color $animation-duration-slider;
   cursor: pointer;
 
-  &:hover {
+  &:not(.active):hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    display: block;
     background-color: $color-icons;
   }
 
