@@ -34,6 +34,7 @@
   opacity: 0;
   transition: opacity 0ms $animation-duration-slider;
   background-color: #000;
+  container-type: inline-size;
 
   &.active {
     z-index: map.get($z-indexes, 'slide-active');
@@ -45,7 +46,7 @@
 .desktopInfoContainer {
   width: 100%;
   display: none;
-  padding: 0.16em 0 0.16em 0.16em;
+  padding: 0.21em 0 0.21em 0.21em;
   container-type: inline-size;
   font-size: 5cqi;
 
@@ -59,8 +60,9 @@
   flex-direction: column;
   width: 100%;
   border-radius: 0.53em;
-  padding: 0.72em;
+  padding: 0.75em;
   background-color: #222;
+  font-size: 14cqi;
 }
 
 .infoText {
