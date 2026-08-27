@@ -49,7 +49,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
   };
 
   return (
-    <div className={styles.productsSlider}>
+    <section className={styles.productsSlider}>
       <div className={styles.topRow}>
         <h2 className={styles.sliderTitle}>{title}</h2>
         <div className={styles.controls}>
@@ -86,6 +86,6 @@ export const ProductsSlider = ({ title, products }: Props) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
