@@ -11,7 +11,11 @@
 
 .container {
   display: flex;
-  gap: to-rem(19);
+  gap: to-rem(20);
+
+  @include respond-to('screen-l') {
+    gap: to-rem(16);
+  }
 }
 
 .content {
