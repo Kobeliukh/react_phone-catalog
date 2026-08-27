@@ -41,16 +41,16 @@
   font-family: Mont, sans-serif;
 }
 
-@mixin h3-desktop {
-  font-size: to-rem(22);
-  font-weight: 700;
-  line-height: to-rem(31);
-}
-
 @mixin h3-mobile {
   font-size: to-rem(20);
   font-weight: 600;
   line-height: to-rem(26);
+}
+
+@mixin h3-desktop {
+  font-size: to-rem(22);
+  font-weight: 700;
+  line-height: to-rem(31);
 }
 
 @mixin h3 {
@@ -62,16 +62,28 @@
   }
 }
 
-@mixin h4 {
+@mixin h4-base {
   color: $color-primary;
   font-family: Mont, sans-serif;
-  font-size: to-rem(16);
   font-weight: 600;
+}
+
+@mixin h4-mobile {
+  font-size: to-rem(16);
   line-height: to-rem(20);
+}
+
+@mixin h4-desktop {
+  font-size: to-rem(20);
+  line-height: to-rem(26);
+}
+
+@mixin h4 {
+  @include h4-base;
+  @include h4-mobile;
 
   @include respond-to('screen-m') {
-    font-size: to-rem(20);
-    line-height: to-rem(26);
+    @include h4-desktop;
   }
 }
 
