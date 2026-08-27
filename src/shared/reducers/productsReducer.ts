@@ -1,15 +1,10 @@
 import { Product } from '@/types/Product';
+import { ProductsState } from '@/types/ProductsState';
 
 type ProductsAction =
   | { type: 'FETCH_START' }
   | { type: 'FETCH_SUCCESS'; payload: Product[] }
   | { type: 'FETCH_ERROR' };
-
-export interface ProductsState {
-  products: Product[];
-  isLoading: boolean;
-  hasError: boolean;
-}
 
 export const productsInitialState: ProductsState = {
   products: [],
