@@ -34,6 +34,16 @@
   }
 }
 
+.logo {
+  width: to-rem(64);
+  height: to-rem(22);
+
+  @include respond-to('screen-l') {
+    width: to-rem(80);
+    height: to-rem(28);
+  }
+}
+
 .buttons {
   display: flex;
   margin-left: auto;

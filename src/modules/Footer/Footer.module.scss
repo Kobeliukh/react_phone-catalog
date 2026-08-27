@@ -19,13 +19,19 @@
   @include respond-to('screen-m') {
     flex-direction: row;
     justify-content: space-between;
-    gap: to-rem(88);
+    gap: to-rem(85);
   }
 
   @include respond-to('screen-l') {
     max-width: $page-max-width-screen-l;
     margin: 0 auto;
   }
+}
+
+.logo {
+  flex-shrink: 0;
+  width: to-rem(89);
+  height: to-rem(32);
 }
 
 .nav {

@@ -2,19 +2,7 @@
 
 .logo {
   display: block;
-
-  &.s {
-    width: to-rem(64);
-    height: to-rem(22);
-  }
-
-  &.m {
-    width: to-rem(80);
-    height: to-rem(28);
-  }
-
-  &.l {
-    width: to-rem(89);
-    height: to-rem(32);
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
