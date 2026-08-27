@@ -3,13 +3,18 @@
 @use '@/styles/mixins' as *;
 @use 'sass:map';
 
-.header {
-  height: $header-height-screen-s;
+.headerContainer {
   position: sticky;
   top: 0;
-  display: flex;
-  gap: to-rem(16);
   z-index: map.get($z-indexes, 'header');
+}
+
+.header {
+  position: relative;
+  height: $header-height-screen-s;
+  display: flex;
+  z-index: map.get($z-indexes, 'header');
+  gap: to-rem(16);
   background-color: $color-white;
   box-shadow: 0 1px 0 0 $color-elements;
 
