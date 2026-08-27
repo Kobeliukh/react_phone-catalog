@@ -13,6 +13,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 $page-padding-screen-s;
+
+  @include respond-to('screen-m') {
+    padding: 0 $page-padding-screen-m;
+  }
+
+  @include respond-to('screen-l') {
+    padding: 0;
+  }
 }
 
 .sliderTitle {
@@ -47,6 +55,7 @@
 
   @include respond-to('screen-l') {
     grid-auto-columns: to-rem(32);
+    padding: 0;
   }
 
   & > * {
@@ -70,6 +79,10 @@
     @include respond-to('screen-m') {
       scroll-margin-left: $page-padding-screen-m;
     }
+
+    @include respond-to('screen-l') {
+      scroll-margin-left: 0;
+    }
   }
 
   & > :last-child {
@@ -77,6 +90,10 @@
 
     @include respond-to('screen-m') {
       scroll-margin-right: $page-padding-screen-m;
+    }
+
+    @include respond-to('screen-l') {
+      scroll-margin-right: 0;
     }
   }
 }
