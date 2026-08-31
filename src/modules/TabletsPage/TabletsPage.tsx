@@ -1,5 +1,13 @@
-// import styles from './TabletsPage.module.scss';
+import { CategoryPage } from '@/shared/components/CategoryPage';
+import { useProductsContext } from '@/shared/hooks/useProductsContext';
+import { Categories } from '@/types/Categories';
 
 export const TabletsPage = () => {
-  return <h1>Tablets Page</h1>;
+  const productsState = useProductsContext();
+
+  const products = productsState.products.filter(
+    product => product.category === Categories.Tablets,
+  );
+
+  return <CategoryPage title="Tablets" products={products} />;
 };
