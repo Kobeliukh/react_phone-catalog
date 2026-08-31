@@ -5,15 +5,32 @@
 .productCard {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: to-rem(8);
   padding: to-rem(32);
   border: 1px solid $color-elements;
+  cursor: pointer;
+  transition: box-shadow $animation-duration;
+
+  &:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 208 / 196;
+  object-fit: contain;
 }
 
 .title {
   @include body-text;
 
+  height: to-rem(58);
   padding-top: to-rem(16);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .prices {
