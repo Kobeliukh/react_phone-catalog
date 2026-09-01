@@ -11,13 +11,13 @@ export const FavoriteButton = ({ id, className }: Props) => {
   const favoritesDispatch = useFavoritesDispatch();
   const favoritesState = useFavoritesState();
 
-  const handleToggleFavorite = (productId: number) => {
+  const handleToggleFavorite = () => {
     favoritesDispatch(currentFavorites => {
-      if (currentFavorites.includes(productId)) {
-        return currentFavorites.filter(favorite => favorite !== productId);
+      if (currentFavorites.includes(id)) {
+        return currentFavorites.filter(favorite => favorite !== id);
       }
 
-      return [...currentFavorites, productId];
+      return [...currentFavorites, id];
     });
   };
 
@@ -25,7 +25,7 @@ export const FavoriteButton = ({ id, className }: Props) => {
     <IconButton
       variant="favorite"
       className={className}
-      onClick={() => handleToggleFavorite(id)}
+      onClick={handleToggleFavorite}
       selected={favoritesState.includes(id)}
     />
   );
