@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import { BurgerMenu } from './components/BurgerMenu';
 import { useLocation } from 'react-router-dom';
 import { Nav } from './components/Nav';
-import { HeaderLink } from './components/HeaderLink';
+import { FavoritesButton } from './components/FavoritesButton';
+import { CartButton } from './components/CartButton';
 
 export const Header = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
@@ -29,11 +30,8 @@ export const Header = () => {
 
         <div className={styles.buttons}>
           <div className={styles.linksWrapper}>
-            <HeaderLink
-              to={'/favorites'}
-              iconURL={'/img/icons/favourites.svg'}
-            />
-            <HeaderLink to={'/cart'} iconURL={'/img/icons/cart.svg'} />
+            <FavoritesButton />
+            <CartButton />
           </div>
           <button
             className={styles.burgerMenuButton}

@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import { HeaderLink } from '../HeaderLink';
 import { Nav } from '../Nav';
 import styles from './BurgerMenu.module.scss';
 import { useEffect } from 'react';
+import { FavoritesButton } from '../FavoritesButton';
+import { CartButton } from '../CartButton';
 
 interface Props {
   className?: string;
@@ -29,16 +30,8 @@ export const BurgerMenu = ({ isOpen, className }: Props) => {
       <Nav />
 
       <div className={styles.buttons}>
-        <HeaderLink
-          to={'/favorites'}
-          iconURL={'/img/icons/favourites.svg'}
-          className={styles.link}
-        />
-        <HeaderLink
-          to={'/cart'}
-          iconURL={'/img/icons/cart.svg'}
-          className={styles.link}
-        />
+        <FavoritesButton className={styles.link} />
+        <CartButton className={styles.link} />
       </div>
     </div>
   );
