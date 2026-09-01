@@ -11,6 +11,7 @@ import { useProductsPagination } from './hooks/useProductsPagination';
 
 interface Props {
   products: Product[];
+  hasFilters: boolean;
 }
 
 const SORT_OPTIONS: DropdownOption[] = [
@@ -26,7 +27,7 @@ const ITEMS_PER_PAGE_OPTIONS: DropdownOption[] = [
   { label: 'All', value: ItemsPerPageFields.All },
 ];
 
-export const ProductsList = ({ products }: Props) => {
+export const ProductsList = ({ products, hasFilters }: Props) => {
   const {
     sort,
     perPage,
@@ -42,24 +43,28 @@ export const ProductsList = ({ products }: Props) => {
 
   return (
     <section className={styles.productsList}>
-      <div className={styles.controls}>
-        <Dropdown
-          description={'Sort by'}
-          options={SORT_OPTIONS}
-          value={sort}
-          onChange={selectedValue => updateSearchParams('sort', selectedValue)}
-          className={classNames(styles.dropdown, styles.sortBy)}
-        />
-        <Dropdown
-          description={'Items on page'}
-          options={ITEMS_PER_PAGE_OPTIONS}
-          value={perPage}
-          onChange={selectedValue =>
-            updateSearchParams('perPage', selectedValue)
-          }
-          className={classNames(styles.dropdown, styles.itemsPerPage)}
-        />
-      </div>
+      {hasFilters && (
+        <div className={styles.controls}>
+          <Dropdown
+            description={'Sort by'}
+            options={SORT_OPTIONS}
+            value={sort}
+            onChange={selectedValue =>
+              updateSearchParams('sort', selectedValue)
+            }
+            className={classNames(styles.dropdown, styles.sortBy)}
+          />
+          <Dropdown
+            description={'Items on page'}
+            options={ITEMS_PER_PAGE_OPTIONS}
+            value={perPage}
+            onChange={selectedValue =>
+              updateSearchParams('perPage', selectedValue)
+            }
+            className={classNames(styles.dropdown, styles.itemsPerPage)}
+          />
+        </div>
+      )}
 
       <div className={styles.content}>
         <div className={styles.list}>
