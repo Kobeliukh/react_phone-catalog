@@ -6,14 +6,14 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const productsStateContext = createContext<ProductsState | null>(null);
+export const ProductsStateContext = createContext<ProductsState | null>(null);
 
 export const ProductsProvider = ({ children }: Props) => {
   const productsState = useProducts();
 
   return (
-    <productsStateContext.Provider value={productsState}>
+    <ProductsStateContext.Provider value={productsState}>
       {children}
-    </productsStateContext.Provider>
+    </ProductsStateContext.Provider>
   );
 };

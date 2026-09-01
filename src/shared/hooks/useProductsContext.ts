@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { productsStateContext } from '../contexts/ProductsContext';
+import { ProductsStateContext } from '../contexts/ProductsContext';
 
 export const useProductsContext = () => {
-  const productsState = useContext(productsStateContext);
+  const productsState = useContext(ProductsStateContext);
 
   if (!productsState) {
     throw new Error(
