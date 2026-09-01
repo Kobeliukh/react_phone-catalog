@@ -66,6 +66,7 @@ export const ProductsList = ({ products }: Props) => {
           {slicedProducts.map(product => (
             <ProductCard
               key={product.id}
+              id={product.id}
               imgURL={product.image}
               title={product.name}
               price={product.price}

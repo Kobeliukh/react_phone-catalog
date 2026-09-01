@@ -1,8 +1,9 @@
 import { Button } from '../Button';
-import { IconButton } from '../IconButton';
+import { FavoriteButton } from './components/FavoriteButton';
 import styles from './ProductCard.module.scss';
 
 interface Props {
+  id: number;
   imgURL: string;
   title: string;
   price: number;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export const ProductCard = ({
+  id,
   imgURL,
   title,
   price,
@@ -59,7 +61,7 @@ export const ProductCard = ({
 
       <div className={styles.buttons}>
         <Button text="Add to cart" />
-        <IconButton variant="favorite" className={styles.favoriteButton} />
+        <FavoriteButton id={id} className={styles.favoriteButton} />
       </div>
     </div>
   );

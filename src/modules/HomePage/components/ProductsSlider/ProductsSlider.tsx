@@ -76,6 +76,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
         {products.map(product => (
           <ProductCard
             key={product.id}
+            id={product.id}
             imgURL={product.image}
             title={product.name}
             price={product.price}

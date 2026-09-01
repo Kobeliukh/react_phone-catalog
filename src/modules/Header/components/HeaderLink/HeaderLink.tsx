@@ -6,9 +6,10 @@ interface Props {
   className?: string;
   iconURL: string;
   to: To;
+  amount?: number;
 }
 
-export const HeaderLink = ({ className, to, iconURL }: Props) => {
+export const HeaderLink = ({ className, to, iconURL, amount }: Props) => {
   return (
     <NavLink
       to={to}
@@ -23,7 +24,13 @@ export const HeaderLink = ({ className, to, iconURL }: Props) => {
       <span
         className={styles.icon}
         style={{ backgroundImage: `url('${iconURL}')` }}
-      ></span>
+      >
+        {!!amount && (
+          <span className={styles.amount}>
+            <span className={styles.amountValue}>{amount}</span>
+          </span>
+        )}
+      </span>
     </NavLink>
   );
 };
