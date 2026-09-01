@@ -9,6 +9,7 @@ interface Props {
   products: Product[];
   hasFilters?: boolean;
   productsName?: string;
+  emptyMessage?: string;
 }
 
 export const CategoryPage = ({
@@ -16,6 +17,7 @@ export const CategoryPage = ({
   products,
   productsName = 'models',
   hasFilters = true,
+  emptyMessage = 'There are no products yet',
 }: Props) => {
   return (
     <main className={styles.categoryPage}>
@@ -28,7 +30,11 @@ export const CategoryPage = ({
           productsName={productsName}
         />
 
-        <ProductsList products={products} hasFilters={hasFilters} />
+        <ProductsList
+          products={products}
+          hasFilters={hasFilters}
+          emptyMessage={emptyMessage}
+        />
       </section>
     </main>
   );

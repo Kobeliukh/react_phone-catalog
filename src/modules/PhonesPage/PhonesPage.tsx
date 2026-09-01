@@ -9,5 +9,11 @@ export const PhonesPage = () => {
     product => product.category === Categories.Phones,
   );
 
-  return <CategoryPage title="Mobile phones" products={products} />;
+  return (
+    <CategoryPage
+      title="Mobile phones"
+      products={products}
+      emptyMessage="There are no phones yet"
+    />
+  );
 };

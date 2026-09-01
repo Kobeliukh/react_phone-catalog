@@ -14,9 +14,12 @@ export const CategoryHeader = ({
   return (
     <div className={styles.categoryHeader}>
       <h1 className={styles.title}>{title}</h1>
-      <p className={styles.modelsCount}>
-        {productsCount} {productsName}
-      </p>
+
+      {productsCount > 0 && (
+        <p className={styles.modelsCount}>
+          {productsCount} {productsName}
+        </p>
+      )}
     </div>
   );
 };
