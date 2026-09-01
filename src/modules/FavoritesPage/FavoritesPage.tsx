@@ -1,4 +1,7 @@
-import { CategoryPage } from '@/shared/components/CategoryPage';
+import { Breadcrumbs } from '@/shared/components/Breadcrumbs';
+import { PageHeader } from '@/shared/components/PageHeader';
+import { PageLayout } from '@/shared/components/PageLayout';
+import { ProductsList } from '@/shared/components/ProductsList';
 import { useFavoritesState } from '@/shared/hooks/useFavoritesState';
 import { useProductsContext } from '@/shared/hooks/useProductsContext';
 import { useMemo } from 'react';
@@ -15,12 +18,17 @@ export const FavoritesPage = () => {
     [favoritesState, productsState.products],
   );
 
-  return (
-    <CategoryPage
+  const headerElement = (
+    <PageHeader
       title="Favourites"
-      products={favorites}
-      hasFilters={false}
+      productsCount={favorites.length}
       productsName="items"
     />
+  );
+
+  return (
+    <PageLayout topNav={<Breadcrumbs />} header={headerElement}>
+      <ProductsList products={favorites} hasFilters={false} />
+    </PageLayout>
   );
 };

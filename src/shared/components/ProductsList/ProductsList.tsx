@@ -11,8 +11,7 @@ import { useProductsPagination } from './hooks/useProductsPagination';
 
 interface Props {
   products: Product[];
-  hasFilters: boolean;
-  emptyMessage: string;
+  hasFilters?: boolean;
 }
 
 const SORT_OPTIONS: DropdownOption[] = [
@@ -28,7 +27,7 @@ const ITEMS_PER_PAGE_OPTIONS: DropdownOption[] = [
   { label: 'All', value: ItemsPerPageFields.All },
 ];
 
-export const ProductsList = ({ products, hasFilters, emptyMessage }: Props) => {
+export const ProductsList = ({ products, hasFilters = true }: Props) => {
   const {
     sort,
     perPage,
@@ -68,56 +67,50 @@ export const ProductsList = ({ products, hasFilters, emptyMessage }: Props) => {
       )}
 
       <div className={styles.content}>
-        {slicedPages.length > 0 ? (
-          <>
-            <div className={styles.list}>
-              {slicedProducts.map(product => (
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  imgURL={product.image}
-                  title={product.name}
-                  price={product.price}
-                  fullPrice={product.fullPrice}
-                  screen={product.screen}
-                  capacity={product.capacity}
-                  ram={product.ram}
+        <div className={styles.list}>
+          {slicedProducts.map(product => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              imgURL={product.image}
+              title={product.name}
+              price={product.price}
+              fullPrice={product.fullPrice}
+              screen={product.screen}
+              capacity={product.capacity}
+              ram={product.ram}
+            />
+          ))}
+        </div>
+
+        {totalPages !== 1 && (
+          <div className={styles.pagination}>
+            <IconButton
+              variant="arrow"
+              rotate={270}
+              onClick={handlePrevPage}
+              disabled={page === 1}
+            />
+
+            <div className={styles.pages}>
+              {slicedPages.map(pageNumber => (
+                <IconButton
+                  key={pageNumber}
+                  variant="pagination"
+                  number={pageNumber}
+                  selected={page === pageNumber}
+                  onClick={() => handleSetPage(pageNumber)}
                 />
               ))}
             </div>
 
-            {totalPages !== 1 && (
-              <div className={styles.pagination}>
-                <IconButton
-                  variant="arrow"
-                  rotate={270}
-                  onClick={handlePrevPage}
-                  disabled={page === 1}
-                />
-
-                <div className={styles.pages}>
-                  {slicedPages.map(pageNumber => (
-                    <IconButton
-                      key={pageNumber}
-                      variant="pagination"
-                      number={pageNumber}
-                      selected={page === pageNumber}
-                      onClick={() => handleSetPage(pageNumber)}
-                    />
-                  ))}
-                </div>
-
-                <IconButton
-                  variant="arrow"
-                  rotate={90}
-                  onClick={handleNextPage}
-                  disabled={page === totalPages}
-                />
-              </div>
-            )}
-          </>
-        ) : (
-          <span className={styles.noProductsMessage}>{emptyMessage}</span>
+            <IconButton
+              variant="arrow"
+              rotate={90}
+              onClick={handleNextPage}
+              disabled={page === totalPages}
+            />
+          </div>
         )}
       </div>
     </section>

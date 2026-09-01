@@ -60,9 +60,3 @@
   display: flex;
   gap: to-rem(8);
 }
-
-.noProductsMessage {
-  @include h4;
-
-  color: $color-secondary;
-}

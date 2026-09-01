@@ -1,18 +1,18 @@
-import styles from './CategoryHeader.module.scss';
+import styles from './PageHeader.module.scss';
 
 interface Props {
   title: string;
   productsCount: number;
-  productsName: string;
+  productsName?: string;
 }
 
-export const CategoryHeader = ({
+export const PageHeader = ({
   title,
   productsCount,
-  productsName,
+  productsName = 'items',
 }: Props) => {
   return (
-    <div className={styles.categoryHeader}>
+    <div className={styles.pageHeader}>
       <h1 className={styles.title}>{title}</h1>
 
       {productsCount > 0 && (

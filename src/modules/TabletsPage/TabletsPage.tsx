@@ -11,8 +11,8 @@ export const TabletsPage = () => {
 
   return (
     <CategoryPage
-      title="Tablets"
       products={products}
+      title="Tablets"
       emptyMessage="There are no tablets yet"
     />
   );

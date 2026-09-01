@@ -1,41 +1,32 @@
+import { Product } from '@/types/Product';
+import { PageHeader } from '../PageHeader';
 import styles from './CategoryPage.module.scss';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { ProductsList } from './components/ProductsList';
-import { CategoryHeader } from './components/CategoryHeader';
-import { Product } from '@/types/Product';
+import { PageLayout } from '../PageLayout';
+import { ProductsList } from '../ProductsList';
 
 interface Props {
-  title: string;
   products: Product[];
-  hasFilters?: boolean;
-  productsName?: string;
-  emptyMessage?: string;
+  title: string;
+  emptyMessage: string;
 }
 
-export const CategoryPage = ({
-  title,
-  products,
-  productsName = 'models',
-  hasFilters = true,
-  emptyMessage = 'There are no products yet',
-}: Props) => {
+export const CategoryPage = ({ products, title, emptyMessage }: Props) => {
+  const headerElement = (
+    <PageHeader
+      title={title}
+      productsCount={products.length}
+      productsName="models"
+    />
+  );
+
   return (
-    <main className={styles.categoryPage}>
-      <Breadcrumbs />
-
-      <section className={styles.content}>
-        <CategoryHeader
-          title={title}
-          productsCount={products.length}
-          productsName={productsName}
-        />
-
-        <ProductsList
-          products={products}
-          hasFilters={hasFilters}
-          emptyMessage={emptyMessage}
-        />
-      </section>
-    </main>
+    <PageLayout topNav={<Breadcrumbs />} header={headerElement}>
+      {products.length > 0 ? (
+        <ProductsList products={products} />
+      ) : (
+        <span className={styles.emptyMessage}>{emptyMessage}</span>
+      )}
+    </PageLayout>
   );
 };

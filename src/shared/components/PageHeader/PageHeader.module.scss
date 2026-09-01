@@ -2,7 +2,7 @@
 @use '@/styles/mixins' as *;
 @use '@/styles/variables' as *;
 
-.categoryHeader {
+.pageHeader {
   display: flex;
   flex-direction: column;
   gap: to-rem(8);
