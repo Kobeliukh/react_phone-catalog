@@ -1,4 +1,4 @@
-import { Button } from '../Button';
+import { AddToCartButton } from './components/AddToCartButton';
 import { FavoriteButton } from './components/FavoriteButton';
 import styles from './ProductCard.module.scss';
 
@@ -60,7 +60,7 @@ export const ProductCard = ({
       </div>
 
       <div className={styles.buttons}>
-        <Button text="Add to cart" />
+        <AddToCartButton id={id} />
         <FavoriteButton id={id} className={styles.favoriteButton} />
       </div>
     </div>
