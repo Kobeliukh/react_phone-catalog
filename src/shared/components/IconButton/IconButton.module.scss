@@ -10,15 +10,25 @@
   margin: 0;
   padding: 0;
   background: none;
-  border: 1px solid $color-icons;
+  border: 0;
   cursor: pointer;
+
+  &.hasBorder {
+    border: 1px solid $color-icons;
+  }
+
+  &:hover {
+    border-color: $color-primary;
+  }
 
   &.pagination {
     display: block;
   }
 
   &.pagination,
-  &.arrow {
+  &.arrow,
+  &.minus,
+  &.plus {
     width: to-rem(32);
     height: to-rem(32);
   }
@@ -26,10 +36,6 @@
   &.favorite {
     width: to-rem(40);
     height: to-rem(40);
-  }
-
-  &:hover {
-    border-color: $color-primary;
   }
 
   &.pagination.selected {
@@ -42,6 +48,10 @@
   }
 
   &.arrow:disabled {
+    border-color: $color-elements;
+  }
+
+  &.minus:disabled {
     border-color: $color-elements;
   }
 }
@@ -68,6 +78,10 @@
     background-image: url('/img/icons/arrow-up.svg');
   }
 
+  .baseButton.arrow:disabled & {
+    background-image: url('/img/icons/arrow-up-light.svg');
+  }
+
   &.favorite {
     background-image: url('/img/icons/favourites.svg');
   }
@@ -76,7 +90,23 @@
     background-image: url('/img/icons/favourites-filled.svg');
   }
 
-  .baseButton.arrow:disabled & {
-    background-image: url('/img/icons/arrow-up-light.svg');
+  &.close {
+    background-image: url('/img/icons/close-light.svg');
+  }
+
+  .baseButton.close:hover & {
+    background-image: url('/img/icons/close.svg');
+  }
+
+  &.minus {
+    background-image: url('/img/icons/minus.svg');
+  }
+
+  .baseButton.minus:disabled & {
+    background-image: url('/img/icons/minus-light.svg');
+  }
+
+  &.plus {
+    background-image: url('/img/icons/plus.svg');
   }
 }
