@@ -22,17 +22,29 @@
   }
 }
 
-@mixin h2 {
+@mixin h2-base {
   color: $color-primary;
   font-family: Mont, sans-serif;
-  font-size: to-rem(22);
   font-weight: 700;
+}
+
+@mixin h2-mobile {
+  font-size: to-rem(22);
   line-height: to-rem(31);
+}
+
+@mixin h2-desktop {
+  font-size: to-rem(32);
+  line-height: to-rem(41);
+  letter-spacing: -0.01em;
+}
+
+@mixin h2 {
+  @include h2-base;
+  @include h2-mobile;
 
   @include respond-to('screen-m') {
-    font-size: to-rem(32);
-    line-height: to-rem(41);
-    letter-spacing: -0.01em;
+    @include h2-desktop;
   }
 }
 
