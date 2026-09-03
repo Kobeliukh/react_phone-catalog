@@ -15,11 +15,15 @@ $header-height-screen-s: to-rem(48);
 $header-height-screen-l: to-rem(64);
 $animation-duration: 200ms;
 $animation-duration-slider: 500ms;
+$animation-duration-backdrop: 200ms;
+$animation-duration-modal: 300ms;
 $screen-breakpoints: (
   'screen-m': to-rem(640),
   'screen-l': to-rem(1200),
 );
 $z-indexes: (
+  'modal': 1000,
+  'backdrop': 999,
   'header': 100,
   'burger-menu': 99,
   'slide': 1,
