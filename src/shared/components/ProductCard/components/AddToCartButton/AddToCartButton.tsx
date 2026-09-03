@@ -10,13 +10,15 @@ export const AddToCartButton = ({ id }: Props) => {
   const cartDispatch = useCartDispatch();
   const cartState = useCartState();
 
-  const handleToggleAdd = () => {
-    cartDispatch(currentProducts => {
-      if (currentProducts.some(product => product.id === id)) {
-        return currentProducts.filter(product => product.id !== id);
-      }
+  const isAdded = cartState.some(product => product.id === id);
 
-      return [...currentProducts, { id: id, quantity: 1 }];
+  const handleAdd = () => {
+    if (isAdded) {
+      return;
+    }
+
+    cartDispatch(currentProducts => {
+      return [...currentProducts, { id, quantity: 1 }];
     });
   };
 
@@ -24,8 +26,9 @@ export const AddToCartButton = ({ id }: Props) => {
     <Button
       text="Add to cart"
       activeText="Added"
-      selected={cartState.some(product => product.id === id)}
-      onClick={handleToggleAdd}
+      selected={isAdded}
+      disabled={isAdded}
+      onClick={handleAdd}
     />
   );
 };
