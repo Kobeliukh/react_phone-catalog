@@ -15,6 +15,8 @@ import { NotFoundPage } from '@/modules/NotFoundPage';
 import { ProductsProvider } from './shared/contexts/ProductsContext';
 import { FavoritesProvider } from './shared/contexts/FavoritesContext';
 import { CartProvider } from './shared/contexts/CartContext';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { Categories } from './types/Categories';
 
 export const Root = () => (
   <Router>
@@ -24,9 +26,18 @@ export const Root = () => (
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<HomePage />} />
-              <Route path="phones" element={<PhonesPage />} />
-              <Route path="tablets" element={<TabletsPage />} />
-              <Route path="accessories" element={<AccessoriesPage />} />
+              <Route path={Categories.Phones}>
+                <Route index element={<PhonesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path={Categories.Tablets}>
+                <Route index element={<TabletsPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+              <Route path={Categories.Accessories}>
+                <Route index element={<AccessoriesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
               <Route path="cart" element={<CartPage />} />
               <Route path="favorites" element={<FavoritesPage />} />
 
