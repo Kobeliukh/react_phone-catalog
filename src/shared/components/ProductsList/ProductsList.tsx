@@ -72,6 +72,8 @@ export const ProductsList = ({ products, hasFilters = true }: Props) => {
             <ProductCard
               key={product.id}
               id={product.id}
+              category={product.category}
+              itemId={product.itemId}
               imgURL={product.image}
               title={product.name}
               price={product.price}
