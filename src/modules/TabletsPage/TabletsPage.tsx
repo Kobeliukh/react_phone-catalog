@@ -1,9 +1,9 @@
 import { CategoryPage } from '@/shared/components/CategoryPage';
-import { useProductsContext } from '@/shared/hooks/useProductsContext';
+import { useProducts } from '@/shared/hooks/useProducts';
 import { Categories } from '@/types/Categories';
 
 export const TabletsPage = () => {
-  const productsState = useProductsContext();
+  const productsState = useProducts();
 
   const products = productsState.products.filter(
     product => product.category === Categories.Tablets,

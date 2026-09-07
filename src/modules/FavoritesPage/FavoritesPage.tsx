@@ -3,11 +3,11 @@ import { PageHeader } from '@/shared/components/PageHeader';
 import { PageLayout } from '@/shared/components/PageLayout';
 import { ProductsList } from '@/shared/components/ProductsList';
 import { useFavoritesState } from '@/shared/hooks/useFavoritesState';
-import { useProductsContext } from '@/shared/hooks/useProductsContext';
+import { useProducts } from '@/shared/hooks/useProducts';
 import { useMemo } from 'react';
 
 export const FavoritesPage = () => {
-  const productsState = useProductsContext();
+  const productsState = useProducts();
   const favoritesState = useFavoritesState();
 
   const favorites = useMemo(

@@ -6,10 +6,10 @@ import { ShopByCategory } from './components/ShopByCategory';
 import { Categories } from '@/types/Categories';
 import { useMemo } from 'react';
 import { ModelsCount } from '@/types/ModelsCount';
-import { useProductsContext } from '@/shared/hooks/useProductsContext';
+import { useProducts } from '@/shared/hooks/useProducts';
 
 export const HomePage = () => {
-  const productsState = useProductsContext();
+  const productsState = useProducts();
 
   const modelsCount: ModelsCount = useMemo(
     () =>
