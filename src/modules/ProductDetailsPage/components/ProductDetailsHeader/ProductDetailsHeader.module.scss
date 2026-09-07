@@ -1,0 +1,14 @@
+@use '@/styles/functions' as *;
+@use '@/styles/mixins' as *;
+
+.productDetailsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(16);
+}
+
+.title {
+  @include h2;
+
+  text-wrap: wrap;
+}
