@@ -1,9 +1,16 @@
-import { AddToCartButton } from './components/AddToCartButton';
-import { FavoriteButton } from './components/FavoriteButton';
+import { Categories } from '@/types/Categories';
+import { AddToCartButton } from '../AddToCartButton';
+import { FavoriteButton } from '../FavoriteButton';
 import styles from './ProductCard.module.scss';
+import { DetailsLink } from '../DetailsLink';
+import { ProductPrice } from '../ProductPrice';
+import { ProductSpecs } from '../ProductSpecs';
+import { Divider } from '../Divider';
 
 interface Props {
   id: number;
+  category: Categories;
+  itemId: string;
   imgURL: string;
   title: string;
   price: number;
@@ -15,6 +22,8 @@ interface Props {
 
 export const ProductCard = ({
   id,
+  category,
+  itemId,
   imgURL,
   title,
   price,
@@ -23,45 +32,31 @@ export const ProductCard = ({
   capacity,
   ram,
 }: Props) => {
+  const specs = [
+    { name: 'Screen', value: screen },
+    { name: 'Capacity', value: capacity },
+    { name: 'RAM', value: ram },
+  ];
+
   return (
     <div className={styles.productCard}>
-      <img src={imgURL} alt={title} className={styles.img} />
+      <DetailsLink category={category} itemId={itemId}>
+        <img src={imgURL} alt={title} className={styles.img} />
+      </DetailsLink>
 
-      <p className={styles.title}>{title}</p>
+      <DetailsLink category={category} itemId={itemId}>
+        <p className={styles.title}>{title}</p>
+      </DetailsLink>
 
-      <div className={styles.prices}>
-        {price === fullPrice ? (
-          <h3 className={styles.price}>{`$${price}`}</h3>
-        ) : (
-          <>
-            <h3 className={styles.price}>{`$${price}`}</h3>
-            <h3 className={styles.fullPrice}>{`$${fullPrice}`}</h3>
-          </>
-        )}
-      </div>
+      <ProductPrice price={price} fullPrice={fullPrice} />
 
-      <div className={styles.divider} />
+      <Divider />
 
-      <div className={styles.specs}>
-        <div className={styles.spec}>
-          <span className={styles.specTitle}>Screen</span>
-          <span className={styles.specValue}>{screen}</span>
-        </div>
-
-        <div className={styles.spec}>
-          <span className={styles.specTitle}>Capacity</span>
-          <span className={styles.specValue}>{capacity}</span>
-        </div>
-
-        <div className={styles.spec}>
-          <span className={styles.specTitle}>RAM</span>
-          <span className={styles.specValue}>{ram}</span>
-        </div>
-      </div>
+      <ProductSpecs specs={specs} />
 
       <div className={styles.buttons}>
         <AddToCartButton id={id} />
-        <FavoriteButton id={id} className={styles.favoriteButton} />
+        <FavoriteButton id={id} />
       </div>
     </div>
   );

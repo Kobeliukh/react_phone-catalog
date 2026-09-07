@@ -22,16 +22,19 @@
   background: url('/img/icons/arrow-up-light.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  transform: rotate(90deg)
+  transform: rotate(90deg);
 }
 
 .crumb {
   @include small-text;
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   line-height: 1;
+
+  &:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   &.active {
     color: $color-secondary;

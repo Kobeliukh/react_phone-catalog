@@ -34,8 +34,15 @@
   }
 
   &.favorite {
-    width: to-rem(40);
-    height: to-rem(40);
+    &.s {
+      width: to-rem(40);
+      height: to-rem(40);
+    }
+
+    &.m {
+      width: to-rem(48);
+      height: to-rem(48);
+    }
   }
 
   &.pagination.selected {

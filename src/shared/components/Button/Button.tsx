@@ -6,6 +6,7 @@ interface Props {
   activeText?: string;
   selected?: boolean;
   disabled?: boolean;
+  size?: 's' | 'm';
   className?: string;
   onClick?: () => void;
 }
@@ -15,6 +16,7 @@ export const Button = ({
   activeText,
   selected = false,
   disabled,
+  size = 's',
   className,
   onClick,
 }: Props) => {
@@ -24,6 +26,7 @@ export const Button = ({
       disabled={disabled}
       className={classNames(
         styles.button,
+        styles[size],
         { [styles.isSelected]: selected },
         className,
       )}

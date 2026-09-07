@@ -11,13 +11,29 @@ interface BaseProps {
 }
 
 type Props =
-  | (BaseProps & { variant: 'pagination'; number: number; selected?: boolean })
-  | (BaseProps & { variant: 'arrow'; selected?: never; rotate?: number })
-  | (BaseProps & { variant: 'favorite'; selected?: boolean; rotate?: never })
+  | (BaseProps & {
+      variant: 'pagination';
+      number: number;
+      selected?: boolean;
+      size?: never;
+    })
+  | (BaseProps & {
+      variant: 'arrow';
+      selected?: never;
+      rotate?: number;
+      size?: never;
+    })
+  | (BaseProps & {
+      variant: 'favorite';
+      selected?: boolean;
+      rotate?: never;
+      size?: 's' | 'm';
+    })
   | (BaseProps & {
       variant: 'close' | 'plus' | 'minus';
       selected?: never;
       rotate?: never;
+      size?: never;
     });
 
 export const IconButton = (props: Props) => {
@@ -27,6 +43,7 @@ export const IconButton = (props: Props) => {
     disabled = false,
     onClick,
     hasBorder = true,
+    size = 's',
   } = props;
 
   return (
@@ -36,6 +53,7 @@ export const IconButton = (props: Props) => {
       className={classNames(
         styles.baseButton,
         styles[variant],
+        styles[size],
         {
           [styles.selected]: props.selected,
           [styles.hasBorder]: hasBorder,
