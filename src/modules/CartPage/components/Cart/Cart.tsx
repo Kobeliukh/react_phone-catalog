@@ -7,6 +7,7 @@ import { useMemo, useState } from 'react';
 import { SavedProduct } from '@/types/SavedProduct';
 import { Modal } from '@/shared/components/Modal';
 import { useCartDispatch } from '@/shared/hooks/useCartDispatch';
+import { Divider } from '@/shared/components/Divider';
 
 export const Cart = () => {
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
@@ -75,6 +76,8 @@ export const Cart = () => {
           <CartItem
             key={id}
             id={id}
+            category={product.category}
+            itemId={product.itemId}
             imgURL={product.image}
             title={product.name}
             price={product.price * quantity}
@@ -89,20 +92,16 @@ export const Cart = () => {
           <p className={styles.itemsCount}>Total for {totals.amount} items</p>
         </div>
 
-        <div className={styles.divider} />
+        <Divider />
 
-        <Button
-          text="Checkout"
-          className={styles.button}
-          onClick={handleCheckoutModalOpen}
-        />
+        <Button text="Checkout" size="m" onClick={handleCheckoutModalOpen} />
       </div>
     </div>
   );
 
   return (
     <>
-      {saved.length === 0 ? Empty : CartContent}{' '}
+      {saved.length === 0 ? Empty : CartContent}
       <Modal isOpen={isCheckoutModalOpen}>
         <div className={styles.checkoutModalContent}>
           <p className={styles.checkoutModalMessage}>

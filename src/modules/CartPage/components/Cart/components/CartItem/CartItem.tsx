@@ -1,16 +1,28 @@
 import { IconButton } from '@/shared/components/IconButton';
 import styles from './CartItem.module.scss';
 import { useCartDispatch } from '@/shared/hooks/useCartDispatch';
+import { Categories } from '@/types/Categories';
+import { DetailsLink } from '@/shared/components/DetailsLink';
 
 interface Props {
   id: number;
+  category: Categories;
+  itemId: string;
   imgURL: string;
   title: string;
   price: number;
   amount: number;
 }
 
-export const CartItem = ({ id, imgURL, title, price, amount }: Props) => {
+export const CartItem = ({
+  id,
+  category,
+  itemId,
+  imgURL,
+  title,
+  price,
+  amount,
+}: Props) => {
   const cartDispatch = useCartDispatch();
 
   const handleIncrease = () => {
@@ -45,10 +57,14 @@ export const CartItem = ({ id, imgURL, title, price, amount }: Props) => {
         <IconButton variant="close" hasBorder={false} onClick={handleRemove} />
 
         <div className={styles.imgContainer}>
-          <img src={imgURL} alt={title} className={styles.img} />
+          <DetailsLink category={category} itemId={itemId}>
+            <img src={imgURL} alt={title} className={styles.img} />
+          </DetailsLink>
         </div>
 
-        <p className={styles.title}>{title}</p>
+        <DetailsLink category={category} itemId={itemId}>
+          <p className={styles.title}>{title}</p>
+        </DetailsLink>
       </div>
 
       <div className={styles.controls}>

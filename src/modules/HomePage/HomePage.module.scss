@@ -37,6 +37,23 @@
   }
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(56);
+  padding: 0 $page-padding-screen-s;
+
+  @include respond-to('screen-m') {
+    padding: 0 $page-padding-screen-m;
+    gap: to-rem(64);
+  }
+
+  @include respond-to('screen-l') {
+    gap: to-rem(80);
+    padding: 0;
+  }
+}
+
 .titleWrapper {
   padding: 0 $page-padding-screen-s;
 

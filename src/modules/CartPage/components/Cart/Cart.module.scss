@@ -52,15 +52,6 @@
   color: $color-secondary;
 }
 
-.divider {
-  height: 1px;
-  background-color: $color-elements;
-}
-
-.button {
-  padding: to-rem(13.5);
-}
-
 .emptyMessageContainer {
   display: flex;
   align-items: center;

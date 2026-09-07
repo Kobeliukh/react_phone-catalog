@@ -1,7 +1,7 @@
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 
-import { ProductsSlider } from './components/ProductsSlider';
+import { ProductsSlider } from '../../shared/components/ProductsSlider';
 import { ShopByCategory } from './components/ShopByCategory';
 import { Categories } from '@/types/Categories';
 import { useMemo } from 'react';
@@ -48,17 +48,13 @@ export const HomePage = () => {
         <PicturesSlider />
       </section>
 
-      <div className={styles.sectionWrapper}>
+      <section className={styles.content}>
         <ProductsSlider title={'Brand new\n models'} products={newestModels} />
-      </div>
 
-      <div className={styles.sectionWrapper}>
         <ShopByCategory modelsCount={modelsCount} />
-      </div>
 
-      <div className={styles.sectionWrapper}>
         <ProductsSlider title="Hot prices" products={cheapestModels} />
-      </div>
+      </section>
     </main>
   );
 };
