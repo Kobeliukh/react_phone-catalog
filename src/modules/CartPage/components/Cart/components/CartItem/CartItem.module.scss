@@ -39,6 +39,14 @@
   object-fit: contain;
 }
 
+.titleWrapper {
+  margin-left: auto;
+
+  @include respond-to('screen-m') {
+    margin-left: 0;
+  }
+}
+
 .title {
   @include body-text;
 }

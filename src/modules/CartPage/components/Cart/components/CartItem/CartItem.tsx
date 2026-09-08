@@ -62,7 +62,11 @@ export const CartItem = ({
           </DetailsLink>
         </div>
 
-        <DetailsLink category={category} itemId={itemId}>
+        <DetailsLink
+          category={category}
+          itemId={itemId}
+          className={styles.titleWrapper}
+        >
           <p className={styles.title}>{title}</p>
         </DetailsLink>
       </div>
