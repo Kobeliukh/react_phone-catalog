@@ -8,7 +8,6 @@ import { ProductSpecs } from '@/shared/components/ProductSpecs';
 import { Divider } from '@/shared/components/Divider';
 import { ProductSpec } from '@/types/ProductSpec';
 import { ProductDetails as ProductDetailsType } from '@/types/ProductDetails';
-import { useProducts } from '@/shared/hooks/useProducts';
 import { ProductsSlider } from '@/shared/components/ProductsSlider';
 import { useMemo } from 'react';
 import { ProductGallery } from './components/ProductGallery';
@@ -16,9 +15,12 @@ import { ProductColors } from './components/ProductColors';
 import { ProductCapacity } from './components/ProductCapacity';
 import { ProductAbout } from './components/ProductAbout';
 import { shuffle } from '@/shared/utils/shuffle';
+import { Product } from '@/types/Product';
 
 interface Props {
   product: ProductDetailsType;
+  catalogProducts: Product[];
+  catalogProduct: Product;
 }
 
 const SPECS_CONFIG = [
@@ -32,9 +34,11 @@ const SPECS_CONFIG = [
   { name: 'Cell', key: 'cell' },
 ];
 
-export const ProductDetails = ({ product }: Props) => {
-  const productsState = useProducts();
-
+export const ProductDetails = ({
+  product,
+  catalogProducts,
+  catalogProduct,
+}: Props) => {
   const specs = SPECS_CONFIG.reduce((acc, spec) => {
     if (!(spec.key in product)) {
       return acc;
@@ -55,10 +59,10 @@ export const ProductDetails = ({ product }: Props) => {
   const shuffledProducts = useMemo(
     () =>
       shuffle(
-        [...productsState.products].filter(item => item.itemId !== product.id),
+        [...catalogProducts].filter(item => item.itemId !== product.id),
       ).slice(0, 10),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [product.namespaceId, productsState.products],
+    [product.namespaceId, catalogProducts],
   );
 
   return (
@@ -74,7 +78,7 @@ export const ProductDetails = ({ product }: Props) => {
           <div className={styles.colorsSection}>
             <div className={styles.colorsHeader}>
               <p className={styles.colorsTitle}>Available colors</p>
-              <p className={styles.productId}>ID: TODO</p>
+              <p className={styles.productId}>ID: {catalogProduct.id}</p>
             </div>
 
             <ProductColors product={product} />
@@ -98,8 +102,8 @@ export const ProductDetails = ({ product }: Props) => {
               />
 
               <div className={styles.purchaseButtons}>
-                <AddToCartButton size="m" />
-                <FavoriteButton size="m" />
+                <AddToCartButton size="m" id={catalogProduct.id} />
+                <FavoriteButton size="m" id={catalogProduct.id} />
               </div>
             </div>
 
