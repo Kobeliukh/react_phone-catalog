@@ -3,23 +3,14 @@ import { Product } from '@/types/Product';
 import { SortFields } from '@/types/SortFields';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { usePaginationParams } from './usePaginationParams';
 
 const PAGINATION_BUTTONS = 4;
 
 export const useProductsPagination = (products: Product[]) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const rawSort = searchParams.get('sort');
-  const sort = Object.values(SortFields).includes(rawSort as SortFields)
-    ? (rawSort as SortFields)
-    : SortFields.Newest;
-
-  const rawPerPage = searchParams.get('perPage');
-  const perPage = Object.values(ItemsPerPageFields).includes(
-    rawPerPage as ItemsPerPageFields,
-  )
-    ? (rawPerPage as ItemsPerPageFields)
-    : ItemsPerPageFields.All;
+  const { sort, perPage } = usePaginationParams();
 
   const itemsCount =
     perPage === ItemsPerPageFields.All ? products.length : +perPage;
