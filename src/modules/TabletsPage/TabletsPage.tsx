@@ -14,6 +14,7 @@ export const TabletsPage = () => {
       products={products}
       title="Tablets"
       emptyMessage="There are no tablets yet"
+      isLoading={productsState.isLoading}
     />
   );
 };

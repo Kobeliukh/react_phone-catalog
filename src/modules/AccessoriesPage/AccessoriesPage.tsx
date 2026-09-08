@@ -14,6 +14,7 @@ export const AccessoriesPage = () => {
       products={products}
       title="Accessories"
       emptyMessage="There are no accessories yet"
+      isLoading={productsState.isLoading}
     />
   );
 };
