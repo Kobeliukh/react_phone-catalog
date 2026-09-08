@@ -8,6 +8,12 @@
   }
 }
 
+@mixin products-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(to-rem(229), 1fr));
+  gap: to-rem(40) to-rem(16);
+}
+
 @mixin h1 {
   color: $color-primary;
   font-family: Mont, sans-serif;
