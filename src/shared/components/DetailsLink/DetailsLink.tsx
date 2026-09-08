@@ -5,8 +5,18 @@ interface Props {
   children: React.ReactNode;
   category: Categories;
   itemId: string;
+  className?: string;
 }
 
-export const DetailsLink = ({ children, category, itemId }: Props) => {
-  return <Link to={`/${category}/${itemId}`}>{children}</Link>;
+export const DetailsLink = ({
+  children,
+  category,
+  itemId,
+  className,
+}: Props) => {
+  return (
+    <Link to={`/${category}/${itemId}`} className={className}>
+      {children}
+    </Link>
+  );
 };
