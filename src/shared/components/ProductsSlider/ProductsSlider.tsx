@@ -3,13 +3,22 @@ import styles from './ProductsSlider.module.scss';
 import { ProductCard } from '@/shared/components/ProductCard';
 import { useRef, useState } from 'react';
 import { Product } from '@/types/Product';
+// eslint-disable-next-line max-len
+import { ProductCardSkeleton } from '../ProductCard/components/ProductCardSkeleton';
 
 interface Props {
   title: string;
   products: Product[];
+  isLoading?: boolean;
 }
 
-export const ProductsSlider = ({ title, products }: Props) => {
+const CARD_SKELETONS_COUNT = 10;
+
+export const ProductsSlider = ({
+  title,
+  products,
+  isLoading = false,
+}: Props) => {
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
@@ -48,6 +57,30 @@ export const ProductsSlider = ({ title, products }: Props) => {
     );
   };
 
+  let content: React.ReactNode = null;
+
+  if (isLoading) {
+    content = Array.from({ length: CARD_SKELETONS_COUNT }, (_, index) => (
+      <ProductCardSkeleton key={index} />
+    ));
+  } else {
+    content = products.map(product => (
+      <ProductCard
+        key={product.id}
+        id={product.id}
+        category={product.category}
+        itemId={product.itemId}
+        imgURL={product.image}
+        title={product.name}
+        price={product.price}
+        fullPrice={product.fullPrice}
+        screen={product.screen}
+        capacity={product.capacity}
+        ram={product.ram}
+      />
+    ));
+  }
+
   return (
     <section className={styles.productsSlider}>
       <div className={styles.topRow}>
@@ -73,21 +106,7 @@ export const ProductsSlider = ({ title, products }: Props) => {
         ref={sliderContentRef}
         onScroll={handleScroll}
       >
-        {products.map(product => (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            category={product.category}
-            itemId={product.itemId}
-            imgURL={product.image}
-            title={product.name}
-            price={product.price}
-            fullPrice={product.fullPrice}
-            screen={product.screen}
-            capacity={product.capacity}
-            ram={product.ram}
-          />
-        ))}
+        {content}
       </div>
     </section>
   );
