@@ -1,43 +1,22 @@
 import { Button } from '@/shared/components/Button';
 import styles from './Cart.module.scss';
 import { CartItem } from './components/CartItem';
-import { useCartState } from '@/shared/hooks/useCartState';
-import { useProducts } from '@/shared/hooks/useProducts';
-import { useMemo, useState } from 'react';
-import { SavedProduct } from '@/types/SavedProduct';
+import { useState } from 'react';
 import { Modal } from '@/shared/components/Modal';
 import { useCartDispatch } from '@/shared/hooks/useCartDispatch';
 import { Divider } from '@/shared/components/Divider';
+import { SavedProduct } from '@/types/SavedProduct';
 
-export const Cart = () => {
+interface Props {
+  products: SavedProduct[];
+}
+
+export const Cart = ({ products }: Props) => {
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
-  const productsState = useProducts();
-  const cartState = useCartState();
   const cartDispatch = useCartDispatch();
 
-  const saved: SavedProduct[] = useMemo(
-    () =>
-      cartState.reduce((acc, savedProduct) => {
-        const actualProduct = productsState.products.find(
-          product => product.id === savedProduct.id,
-        );
-
-        if (!actualProduct) {
-          return acc;
-        }
-
-        acc.push({
-          ...savedProduct,
-          product: actualProduct,
-        });
-
-        return acc;
-      }, [] as SavedProduct[]),
-    [cartState, productsState],
-  );
-
-  const totals = saved.reduce(
+  const totals = products.reduce(
     (acc, item) => ({
       price: acc.price + item.product.price * item.quantity,
       amount: acc.amount + item.quantity,
@@ -72,7 +51,7 @@ export const Cart = () => {
   const CartContent = (
     <div className={styles.cart}>
       <div className={styles.list}>
-        {saved.map(({ id, product, quantity }) => (
+        {products.map(({ id, product, quantity }) => (
           <CartItem
             key={id}
             id={id}
@@ -101,7 +80,7 @@ export const Cart = () => {
 
   return (
     <>
-      {saved.length === 0 ? Empty : CartContent}
+      {products.length === 0 ? Empty : CartContent}
       <Modal isOpen={isCheckoutModalOpen}>
         <div className={styles.checkoutModalContent}>
           <p className={styles.checkoutModalMessage}>
