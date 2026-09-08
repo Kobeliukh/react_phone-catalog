@@ -4,9 +4,10 @@ import styles from './ShopByCategory.module.scss';
 
 interface Props {
   modelsCount: ModelsCount;
+  isLoading?: boolean;
 }
 
-export const ShopByCategory = ({ modelsCount }: Props) => {
+export const ShopByCategory = ({ modelsCount, isLoading = false }: Props) => {
   return (
     <section className={styles.shopByCategory}>
       <h2 className={styles.title}>Shop by category</h2>
@@ -17,6 +18,7 @@ export const ShopByCategory = ({ modelsCount }: Props) => {
           imgURL="/img/categories/category-phones.png"
           title="Mobile phones"
           modelsCount={modelsCount.phones}
+          isLoading={isLoading}
         />
 
         <CategoryCard
@@ -24,6 +26,7 @@ export const ShopByCategory = ({ modelsCount }: Props) => {
           imgURL="/img/categories/category-tablets.png"
           title="Tablets"
           modelsCount={modelsCount.tablets}
+          isLoading={isLoading}
         />
 
         <CategoryCard
@@ -31,6 +34,7 @@ export const ShopByCategory = ({ modelsCount }: Props) => {
           imgURL="/img/categories/category-accessories.png"
           title="Accessories"
           modelsCount={modelsCount.accessories}
+          isLoading={isLoading}
         />
       </div>
     </section>
