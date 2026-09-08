@@ -8,6 +8,7 @@ import { useProducts } from '@/shared/hooks/useProducts';
 import { useCartState } from '@/shared/hooks/useCartState';
 import { useMemo } from 'react';
 import { SavedProduct } from '@/types/SavedProduct';
+import { CartSkeleton } from './components/Cart/components/CartSkeleton';
 
 export const CartPage = () => {
   const productsState = useProducts();
@@ -39,7 +40,7 @@ export const CartPage = () => {
       topNav={<BackButton />}
       header={<PageHeader title="Cart" productsCount={0} />}
     >
-      <Cart products={saved} />
+      {productsState.isLoading ? <CartSkeleton /> : <Cart products={saved} />}
     </PageLayout>
   );
 };
