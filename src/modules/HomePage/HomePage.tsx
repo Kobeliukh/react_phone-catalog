@@ -49,11 +49,22 @@ export const HomePage = () => {
       </section>
 
       <section className={styles.content}>
-        <ProductsSlider title={'Brand new\n models'} products={newestModels} />
+        <ProductsSlider
+          title={'Brand new\n models'}
+          products={newestModels}
+          isLoading={productsState.isLoading}
+        />
 
-        <ShopByCategory modelsCount={modelsCount} />
+        <ShopByCategory
+          modelsCount={modelsCount}
+          isLoading={productsState.isLoading}
+        />
 
-        <ProductsSlider title="Hot prices" products={cheapestModels} />
+        <ProductsSlider
+          title="Hot prices"
+          products={cheapestModels}
+          isLoading={productsState.isLoading}
+        />
       </section>
     </main>
   );
