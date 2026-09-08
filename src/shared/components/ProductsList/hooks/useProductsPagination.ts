@@ -4,8 +4,7 @@ import { SortFields } from '@/types/SortFields';
 import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { usePaginationParams } from './usePaginationParams';
-
-const PAGINATION_BUTTONS = 4;
+import { PAGINATION_BUTTONS } from '../constants/pagination';
 
 export const useProductsPagination = (products: Product[]) => {
   const [searchParams, setSearchParams] = useSearchParams();
