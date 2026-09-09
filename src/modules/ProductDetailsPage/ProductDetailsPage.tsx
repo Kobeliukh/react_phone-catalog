@@ -4,9 +4,9 @@ import { Breadcrumbs } from '@/shared/components/Breadcrumbs';
 import { ProductDetailsHeader } from './components/ProductDetailsHeader';
 import { ProductDetails } from './components/ProductDetails';
 import { useProducts } from '@/shared/hooks/useProducts';
-import { NotFoundPage } from '../NotFoundPage';
 /* eslint-disable max-len */
 import { ProductDetailsSkeleton } from './components/ProductDetails/components/ProductDetailsSkeleton';
+import { ProductNotFound } from './components/ProductNotFound';
 
 export const ProductDetailsPage = () => {
   const productDetailsState = useProductDetails();
@@ -20,11 +20,11 @@ export const ProductDetailsPage = () => {
     cProduct => cProduct.itemId === product?.id,
   );
 
-  if (!isLoading && (!product || !catalogProduct)) {
-    return <NotFoundPage />;
-  }
-
   let content: React.ReactNode = null;
+
+  if (!isLoading && (!product || !catalogProduct)) {
+    content = <ProductNotFound />;
+  }
 
   if (isLoading) {
     content = <ProductDetailsSkeleton />;
