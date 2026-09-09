@@ -12,3 +12,13 @@
 
   text-wrap: wrap;
 }
+
+.titleSkeleton {
+  width: 85%;
+  height: to-rem(62);
+
+  @include respond-to('screen-m') {
+    width: to-rem(500);
+    height: to-rem(41);
+  }
+}
