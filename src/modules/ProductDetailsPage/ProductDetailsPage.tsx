@@ -5,6 +5,8 @@ import { ProductDetailsHeader } from './components/ProductDetailsHeader';
 import { ProductDetails } from './components/ProductDetails';
 import { useProducts } from '@/shared/hooks/useProducts';
 import { NotFoundPage } from '../NotFoundPage';
+/* eslint-disable max-len */
+import { ProductDetailsSkeleton } from './components/ProductDetails/components/ProductDetailsSkeleton';
 
 export const ProductDetailsPage = () => {
   const productDetailsState = useProductDetails();
@@ -12,28 +14,41 @@ export const ProductDetailsPage = () => {
 
   const product = productDetailsState.product;
 
-  if (!product || productDetailsState.isLoading || productsState.isLoading) {
-    return 'loading...';
-  }
+  const isLoading = productDetailsState.isLoading || productsState.isLoading;
 
   const catalogProduct = productsState.products.find(
-    cProduct => cProduct.itemId === product.id,
+    cProduct => cProduct.itemId === product?.id,
   );
 
-  if (!catalogProduct) {
+  if (!isLoading && (!product || !catalogProduct)) {
     return <NotFoundPage />;
   }
 
-  return (
-    <PageLayout
-      topNav={<Breadcrumbs />}
-      header={<ProductDetailsHeader title={product.name} />}
-    >
+  let content: React.ReactNode = null;
+
+  if (isLoading) {
+    content = <ProductDetailsSkeleton />;
+  } else if (product && catalogProduct) {
+    content = (
       <ProductDetails
         product={product}
         catalogProducts={productsState.products}
         catalogProduct={catalogProduct}
       />
+    );
+  }
+
+  return (
+    <PageLayout
+      topNav={<Breadcrumbs />}
+      header={
+        <ProductDetailsHeader
+          title={product?.name || ''}
+          isLoading={isLoading}
+        />
+      }
+    >
+      {content}
     </PageLayout>
   );
 };
