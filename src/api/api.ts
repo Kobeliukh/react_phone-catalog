@@ -1,13 +1,29 @@
 import { Categories } from '@/types/Categories';
-import { Product } from '@/types/Product';
-import { ProductDetails } from '@/types/ProductDetails';
 
-export const getProducts = async (): Promise<Product[]> => {
-  return (await fetch('/api/products.json')).json();
+const BASE_URL = '/api';
+
+const wait = (delay: number) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
 };
 
-export const getCategory = async (
-  category: Categories,
-): Promise<ProductDetails[]> => {
-  return (await fetch(`/api/${category}.json`)).json();
+const request = async (url: string) => {
+  const response = await fetch(BASE_URL + url);
+
+  await wait(1500);
+
+  if (!response.ok) {
+    throw new Error();
+  }
+
+  return response.json();
+};
+
+export const getProducts = async () => {
+  return request('/products.json');
+};
+
+export const getCategory = async (category: Categories) => {
+  return request(`/${category}.json`);
 };
