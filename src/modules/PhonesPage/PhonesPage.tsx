@@ -15,6 +15,8 @@ export const PhonesPage = () => {
       title="Mobile phones"
       emptyMessage="There are no phones yet"
       isLoading={productsState.isLoading}
+      hasError={productsState.hasError}
+      reloadFunction={productsState.retryFetch}
     />
   );
 };

@@ -6,12 +6,15 @@ import { PageLayout } from '../PageLayout';
 import { ProductsList } from '../ProductsList';
 // eslint-disable-next-line max-len
 import { ProductsListSkeleton } from '../ProductsList/components/ProductsListSkeleton';
+import { CategoryPageError } from './components/CategoryPageError';
 
 interface Props {
   products: Product[];
   title: string;
   emptyMessage: string;
   isLoading?: boolean;
+  hasError?: boolean;
+  reloadFunction: () => void;
 }
 
 export const CategoryPage = ({
@@ -19,6 +22,8 @@ export const CategoryPage = ({
   title,
   emptyMessage,
   isLoading = false,
+  hasError = false,
+  reloadFunction,
 }: Props) => {
   const headerElement = (
     <PageHeader
@@ -33,6 +38,8 @@ export const CategoryPage = ({
 
   if (isLoading) {
     content = <ProductsListSkeleton />;
+  } else if (hasError) {
+    content = <CategoryPageError reloadFunction={reloadFunction} />;
   } else if (products.length > 0) {
     content = <ProductsList products={products} />;
   } else {

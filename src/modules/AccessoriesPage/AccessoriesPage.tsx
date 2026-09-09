@@ -15,6 +15,8 @@ export const AccessoriesPage = () => {
       title="Accessories"
       emptyMessage="There are no accessories yet"
       isLoading={productsState.isLoading}
+      hasError={productsState.hasError}
+      reloadFunction={productsState.retryFetch}
     />
   );
 };

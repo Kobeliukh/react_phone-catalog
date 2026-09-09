@@ -15,6 +15,8 @@ export const TabletsPage = () => {
       title="Tablets"
       emptyMessage="There are no tablets yet"
       isLoading={productsState.isLoading}
+      hasError={productsState.hasError}
+      reloadFunction={productsState.retryFetch}
     />
   );
 };
