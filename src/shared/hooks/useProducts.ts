@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import {
   productsInitialState,
   productsReducer,
@@ -11,21 +11,21 @@ export const useProducts = () => {
     productsInitialState,
   );
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        productsDispatch({ type: 'FETCH_START' });
+  const fetchProducts = useCallback(async () => {
+    try {
+      productsDispatch({ type: 'FETCH_START' });
 
-        const productsResponse = await getProducts();
+      const productsResponse = await getProducts();
 
-        productsDispatch({ type: 'FETCH_SUCCESS', payload: productsResponse });
-      } catch {
-        productsDispatch({ type: 'FETCH_ERROR' });
-      }
-    };
-
-    fetchProducts();
+      productsDispatch({ type: 'FETCH_SUCCESS', payload: productsResponse });
+    } catch {
+      productsDispatch({ type: 'FETCH_ERROR' });
+    }
   }, []);
 
-  return productsState;
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
+  return { ...productsState, retryFetch: fetchProducts };
 };
