@@ -8,7 +8,7 @@ import { ProductCardSkeleton } from '../ProductCard/components/ProductCardSkelet
 
 interface Props {
   title: string;
-  products: Product[];
+  products?: Product[];
   isLoading?: boolean;
 }
 
@@ -59,7 +59,7 @@ export const ProductsSlider = ({
 
   let content: React.ReactNode = null;
 
-  if (isLoading) {
+  if (isLoading || !products) {
     content = Array.from({ length: CARD_SKELETONS_COUNT }, (_, index) => (
       <ProductCardSkeleton key={index} />
     ));
