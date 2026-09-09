@@ -8,7 +8,7 @@ type ProductsAction =
 
 export const productsInitialState: ProductsState = {
   products: [],
-  isLoading: false,
+  isLoading: true,
   hasError: false,
 };
 

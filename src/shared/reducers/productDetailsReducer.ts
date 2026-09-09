@@ -8,7 +8,7 @@ type ProductDetailsAction =
 
 export const productDetailsActionInitialState: ProductDetailsState = {
   product: null,
-  isLoading: false,
+  isLoading: true,
   hasError: false,
 };
 
