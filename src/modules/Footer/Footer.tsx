@@ -45,13 +45,13 @@ export const Footer = () => {
           </ul>
         </nav>
 
-        <button
+        <div
           className={styles.toTopButton}
           onClick={() => scroll({ top: 0, behavior: 'smooth' })}
         >
           <span className={styles.toTopButtonName}>Back to top</span>
           <IconButton variant="arrow" />
-        </button>
+        </div>
       </div>
     </footer>
   );
