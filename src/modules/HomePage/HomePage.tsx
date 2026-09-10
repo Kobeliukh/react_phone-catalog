@@ -26,16 +26,24 @@ export const HomePage = () => {
     [productsState.products],
   );
 
-  const newestModels = [...productsState.products].sort(
-    (modelA, modelB) => modelB.year - modelA.year,
+  const newestModels = useMemo(
+    () =>
+      [...productsState.products].sort(
+        (modelA, modelB) => modelB.year - modelA.year,
+      ),
+    [productsState.products],
   );
 
-  const cheapestModels = [...productsState.products].sort((modelA, modelB) => {
-    const modelAdiff = modelA.fullPrice - modelA.price;
-    const modelBdiff = modelB.fullPrice - modelB.price;
+  const cheapestModels = useMemo(
+    () =>
+      [...productsState.products].sort((modelA, modelB) => {
+        const modelAdiff = modelA.fullPrice - modelA.price;
+        const modelBdiff = modelB.fullPrice - modelB.price;
 
-    return modelBdiff - modelAdiff;
-  });
+        return modelBdiff - modelAdiff;
+      }),
+    [productsState.products],
+  );
 
   return (
     <main className={styles.homePage}>
