@@ -15,7 +15,7 @@ export const ShopByCategory = ({ modelsCount, isLoading = false }: Props) => {
       <div className={styles.content}>
         <CategoryCard
           linkURL="/phones"
-          imgURL="/img/categories/category-phones.png"
+          imgURL="img/categories/category-phones.png"
           title="Mobile phones"
           modelsCount={modelsCount.phones}
           isLoading={isLoading}
@@ -23,7 +23,7 @@ export const ShopByCategory = ({ modelsCount, isLoading = false }: Props) => {
 
         <CategoryCard
           linkURL="/tablets"
-          imgURL="/img/categories/category-tablets.png"
+          imgURL="img/categories/category-tablets.png"
           title="Tablets"
           modelsCount={modelsCount.tablets}
           isLoading={isLoading}
@@ -31,7 +31,7 @@ export const ShopByCategory = ({ modelsCount, isLoading = false }: Props) => {
 
         <CategoryCard
           linkURL="/accessories"
-          imgURL="/img/categories/category-accessories.png"
+          imgURL="img/categories/category-accessories.png"
           title="Accessories"
           modelsCount={modelsCount.accessories}
           isLoading={isLoading}

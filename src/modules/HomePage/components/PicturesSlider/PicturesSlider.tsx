@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const slides = [
   {
-    imgMobile: '/img/banners/banner-iphone-14-pro-mobile.png',
-    imgDesktop: '/img/banners/banner-iphone-14-pro-desktop.png',
+    imgMobile: 'img/banners/banner-iphone-14-pro-mobile.png',
+    imgDesktop: 'img/banners/banner-iphone-14-pro-desktop.png',
     title: 'iPhone 14 Pro',
     badge: 'Now available\n in our store!',
     descr: 'Pro. Beyond.',
@@ -15,8 +15,8 @@ const slides = [
     productLink: '/phones/apple-iphone-14-pro-512gb-spaceblack',
   },
   {
-    imgMobile: '/img/banners/banner-apple-watch-series-6-mobile.png',
-    imgDesktop: '/img/banners/banner-apple-watch-series-6-desktop.png',
+    imgMobile: 'img/banners/banner-apple-watch-series-6-mobile.png',
+    imgDesktop: 'img/banners/banner-apple-watch-series-6-desktop.png',
     title: 'Apple Watch Series 6',
     badge: 'Fresh tech\n just arrived!',
     descr: 'The future of health.',
@@ -24,8 +24,8 @@ const slides = [
     productLink: '/accessories/apple-watch-series-6-44mm-blue',
   },
   {
-    imgMobile: '/img/banners/banner-ipad-pro-mobile.png',
-    imgDesktop: '/img/banners/banner-ipad-pro-desktop.png',
+    imgMobile: 'img/banners/banner-ipad-pro-mobile.png',
+    imgDesktop: 'img/banners/banner-ipad-pro-desktop.png',
     title: 'iPad Pro',
     badge: 'Top choice\n for creators!',
     descr: 'Mind-blowing power.',

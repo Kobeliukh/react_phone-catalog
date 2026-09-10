@@ -11,7 +11,7 @@ export const CartButton = ({ className }: Props) => {
   return (
     <HeaderLink
       to={'/cart'}
-      iconURL={'/img/icons/cart.svg'}
+      iconURL={'img/icons/cart.svg'}
       className={className}
       amount={cartState.length}
     />

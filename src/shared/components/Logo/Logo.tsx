@@ -7,6 +7,6 @@ interface Props {
 
 export const Logo = ({ className }: Props) => (
   <Link to={'/'} className={className}>
-    <img src="/img/icons/logo.svg" alt="Logo" className={styles.logo} />
+    <img src="img/icons/logo.svg" alt="Logo" className={styles.logo} />
   </Link>
 );

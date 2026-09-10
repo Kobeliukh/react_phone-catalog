@@ -11,7 +11,7 @@ export const FavoritesButton = ({ className }: Props) => {
   return (
     <HeaderLink
       to={'/favorites'}
-      iconURL={'/img/icons/favourites.svg'}
+      iconURL={'img/icons/favourites.svg'}
       className={className}
       amount={favoritesState.length}
     />

@@ -1,6 +1,6 @@
 import { Categories } from '@/types/Categories';
 
-const BASE_URL = '/api';
+const BASE_URL = 'api';
 
 const wait = (delay: number) => {
   return new Promise(resolve => {
