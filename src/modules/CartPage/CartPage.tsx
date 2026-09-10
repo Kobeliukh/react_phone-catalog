@@ -9,6 +9,7 @@ import { useCartState } from '@/shared/hooks/useCartState';
 import { useMemo } from 'react';
 import { SavedProduct } from '@/types/SavedProduct';
 import { CartSkeleton } from './components/Cart/components/CartSkeleton';
+import { PageError } from '@/shared/components/PageError';
 
 export const CartPage = () => {
   const productsState = useProducts();
@@ -35,12 +36,22 @@ export const CartPage = () => {
     [cartState, productsState],
   );
 
+  let content: React.ReactNode = null;
+
+  if (productsState.isLoading) {
+    content = <CartSkeleton />;
+  } else if (productsState.hasError) {
+    content = <PageError reloadFunction={productsState.retryFetch} />;
+  } else {
+    content = <Cart products={saved} />;
+  }
+
   return (
     <PageLayout
       topNav={<BackButton />}
       header={<PageHeader title="Cart" productsCount={0} />}
     >
-      {productsState.isLoading ? <CartSkeleton /> : <Cart products={saved} />}
+      {content}
     </PageLayout>
   );
 };

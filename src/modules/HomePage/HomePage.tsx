@@ -7,6 +7,7 @@ import { Categories } from '@/types/Categories';
 import { useMemo } from 'react';
 import { ModelsCount } from '@/types/ModelsCount';
 import { useProducts } from '@/shared/hooks/useProducts';
+import { PageError } from '@/shared/components/PageError';
 
 export const HomePage = () => {
   const productsState = useProducts();
@@ -48,24 +49,28 @@ export const HomePage = () => {
         <PicturesSlider />
       </section>
 
-      <section className={styles.content}>
-        <ProductsSlider
-          title={'Brand new\n models'}
-          products={newestModels}
-          isLoading={productsState.isLoading}
-        />
+      {productsState.hasError ? (
+        <PageError reloadFunction={productsState.retryFetch} />
+      ) : (
+        <section className={styles.content}>
+          <ProductsSlider
+            title={'Brand new\n models'}
+            products={newestModels}
+            isLoading={productsState.isLoading}
+          />
 
-        <ShopByCategory
-          modelsCount={modelsCount}
-          isLoading={productsState.isLoading}
-        />
+          <ShopByCategory
+            modelsCount={modelsCount}
+            isLoading={productsState.isLoading}
+          />
 
-        <ProductsSlider
-          title="Hot prices"
-          products={cheapestModels}
-          isLoading={productsState.isLoading}
-        />
-      </section>
+          <ProductsSlider
+            title="Hot prices"
+            products={cheapestModels}
+            isLoading={productsState.isLoading}
+          />
+        </section>
+      )}
     </main>
   );
 };

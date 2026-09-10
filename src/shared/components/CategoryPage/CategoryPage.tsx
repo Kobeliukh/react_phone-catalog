@@ -6,7 +6,7 @@ import { PageLayout } from '../PageLayout';
 import { ProductsList } from '../ProductsList';
 // eslint-disable-next-line max-len
 import { ProductsListSkeleton } from '../ProductsList/components/ProductsListSkeleton';
-import { CategoryPageError } from './components/CategoryPageError';
+import { PageError } from '../PageError';
 
 interface Props {
   products: Product[];
@@ -39,7 +39,7 @@ export const CategoryPage = ({
   if (isLoading) {
     content = <ProductsListSkeleton />;
   } else if (hasError) {
-    content = <CategoryPageError reloadFunction={reloadFunction} />;
+    content = <PageError reloadFunction={reloadFunction} />;
   } else if (products.length > 0) {
     content = <ProductsList products={products} />;
   } else {
