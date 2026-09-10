@@ -12,6 +12,7 @@ const slides = [
     badge: 'Now available\n in our store!',
     descr: 'Pro. Beyond.',
     desktopInfo: 'Grab yours today',
+    productLink: '/phones/apple-iphone-14-pro-512gb-spaceblack',
   },
   {
     imgMobile: '/img/banners/banner-apple-watch-series-6-mobile.png',
@@ -20,6 +21,7 @@ const slides = [
     badge: 'Fresh tech\n just arrived!',
     descr: 'The future of health.',
     desktopInfo: 'Stay ahead of time',
+    productLink: '/accessories/apple-watch-series-6-44mm-blue',
   },
   {
     imgMobile: '/img/banners/banner-ipad-pro-mobile.png',
@@ -28,6 +30,7 @@ const slides = [
     badge: 'Top choice\n for creators!',
     descr: 'Mind-blowing power.',
     desktopInfo: 'Your new canvas awaits',
+    productLink: '/tablets/apple-ipad-pro-11-2021-512gb-silver',
   },
 ];
 
@@ -135,7 +138,7 @@ export const PicturesSlider = () => {
                 <div className={styles.desktopInfo}>
                   <p className={styles.badge}>{slide.badge}</p>
                   <p className={styles.infoText}>{slide.desktopInfo}</p>
-                  <Link to={'/'} className={styles.infoButton}>
+                  <Link to={slide.productLink} className={styles.infoButton}>
                     <span className={styles.infoButtonText}>Order now</span>
                   </Link>
                 </div>
