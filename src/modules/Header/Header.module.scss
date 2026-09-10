@@ -74,6 +74,8 @@
   width: to-rem(16);
   height: to-rem(16);
   background-image: url('/img/icons/burger-menu.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
 
   &.isOpen {
     background-image: url('/img/icons/close.svg');
