@@ -1,3 +1,4 @@
+import styles from './FavoritesPage.module.scss';
 import { Breadcrumbs } from '@/shared/components/Breadcrumbs';
 import { PageError } from '@/shared/components/PageError';
 import { PageHeader } from '@/shared/components/PageHeader';
@@ -36,6 +37,12 @@ export const FavoritesPage = () => {
     content = <ProductsListSkeleton hasFilters={false} hasPagination={false} />;
   } else if (productsState.hasError) {
     content = <PageError reloadFunction={productsState.retryFetch} />;
+  } else if (favorites.length === 0) {
+    content = (
+      <div className={styles.emptyMessageContainer}>
+        <h2 className={styles.emptyMessage}>Your favourites is empty</h2>
+      </div>
+    );
   } else {
     content = <ProductsList products={favorites} hasFilters={false} />;
   }
